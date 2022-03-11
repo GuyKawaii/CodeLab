@@ -2,7 +2,7 @@ package Basic;
 
 public class StringAndChar {
 	
-	// 6 firstLastOccurrence
+	// 6 Write a program to find the first and the last occurrence of the letter 'o' and character ',' in "Hello, World".
 	public int[] firstLastOccurrence(String str, char c) {
 		int first = -1;
 		int last = -1;
@@ -24,7 +24,9 @@ public class StringAndChar {
 		return new int[]{first, last};
 	}
 	
-	// 7 abbreviations
+	// 7 Write a program that takes your full name as input and displays the abbreviations of the first and middle names
+	// except the last name which is displayed as it is. For example, if your name is Robert Brett Roser,
+	// then the output should be R.B.Roser.
 	public void abbreviations(String name) {
 		String[] names = name.split(" ");
 		
@@ -39,7 +41,7 @@ public class StringAndChar {
 		
 	}
 	
-	// 8 numVowelsConsonantsDigitsSpace
+	// 8 Write a program to find the number of vowels, consonants, digits and white space characters in a string.
 	public void numVowelsConsonantsDigitsSpace(String str) {
 		String strLower = str.toLowerCase();
 		int vowels = 0;
@@ -69,7 +71,7 @@ public class StringAndChar {
 		System.out.println("     space: " + space);
 	}
 	
-	// 9 deleteConsonants
+	// 9 Write a program to delete all consonants from the string "Hello, have a good day".
 	public String deleteConsonants(String str) {
 		char c;
 		String strLower = str.toLowerCase();
@@ -90,7 +92,8 @@ public class StringAndChar {
 		return newStr.toString();
 	}
 	
-	// 10 occurrenceLetters
+	// 10 Input a string of alphabets. Find out the number of occurrence of all alphabets in that string.
+	// Find out the alphabet with maximum occurrence.
 	public char occurrenceLetters(String str) {
 		int max = 0;
 		String strUpper = str.toUpperCase();

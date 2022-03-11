@@ -2,7 +2,7 @@ package Basic;
 
 import java.util.Scanner;
 
-public class Arrays {
+public class Arrays10 {
 	Scanner in = new Scanner(System.in);
 	
 	// 1 Take 10 integer inputs from user and store them in an array and print them on screen.
@@ -216,7 +216,7 @@ public class Arrays {
 	
 	
 	public static void main(String[] args) {
-		Arrays a = new Arrays();
+		Arrays10 a = new Arrays10();
 		
 		System.out.println(java.util.Arrays.toString(a.subArray(new int[]{10, 12, 20, 30, 25, 40, 32, 31, 35, 50, 60})));
 	}
