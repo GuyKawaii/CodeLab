@@ -1,6 +1,6 @@
 package Intermediate;
 
-public class IfElse {
+public class if_else_3_exercises {
 	
 	// 1 isLeapYear
 	public boolean isLeapYear(int year) {
@@ -33,7 +33,7 @@ public class IfElse {
 	
 	
 	public static void main(String[] args) {
-		IfElse i = new IfElse();
+		if_else_3_exercises i = new if_else_3_exercises();
 		int n = 123;
 		System.out.println(i.reverseDigits(n));
 		System.out.println(n);
