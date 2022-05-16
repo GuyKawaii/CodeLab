@@ -8,39 +8,66 @@ import java.util.Locale;
 public class CurrencyConverter {
   private JFrame frame;
   private JPanel panel;
-  private JButton button;
-  private final double USD_PR_DKK = 7.16;
-  private double usd = 0;
+  private final double USD_PR_DKK;
+  private final double DKK_PR_USD;
+  private double quoteCurrency;
   
   CurrencyConverter() {
+    // ### state
+    USD_PR_DKK = 7.16;
+    DKK_PR_USD = 1 / USD_PR_DKK;
+    quoteCurrency = 0;
+    
+    // ### UI
     frame = new JFrame("Currency converter");
     panel = new JPanel();
     panel.setLayout(new FlowLayout());
     frame.add(panel);
     
     // elements
-    JLabel labelDKK = new JLabel("DKK");
-    JLabel labelUSD = new JLabel("USD");
-    JLabel labelUSDPrDKK = new JLabel(String.format("%.2f USD pr. DKK", USD_PR_DKK));
+    JLabel labelBaseCurrency = new JLabel("DKK");
+    JLabel labelQuoteCurrency = new JLabel("USD");
+    JLabel labelConversionRate = new JLabel(String.format("%.2f USD pr. DKK", DKK_PR_USD));
     
-    JTextField textFieldDKK = new JTextField(7);
-    JTextField textFieldUSD = new JTextField(String.format("%.2f", usd), 7);
+    JTextField textFieldBaseCurrency = new JTextField(7);
+    JTextField textFieldQuoteCurrency = new JTextField(String.format("%.2f", quoteCurrency), 7);
     
-    button = new JButton("convert");
+    JButton buttonConvert = new JButton("convert");
+    JButton buttonSwitch = new JButton("switch");
     
     // layout
-    panel.add(labelDKK);
-    panel.add(textFieldDKK);
-    panel.add(labelUSD);
-    panel.add(textFieldUSD);
-    panel.add(button);
-    panel.add(labelUSDPrDKK);
+    panel.add(labelBaseCurrency);
+    panel.add(textFieldBaseCurrency);
+    panel.add(labelQuoteCurrency);
+    panel.add(textFieldQuoteCurrency);
+    panel.add(buttonConvert);
+    panel.add(labelConversionRate);
+    panel.add(buttonSwitch);
     frame.pack();
     
     // action
-    button.addActionListener(e -> {
-      usd = usdPrDkk(textFieldDKK.getText());
-      textFieldUSD.setText(String.format("%.2f", usd));
+    buttonConvert.addActionListener(e -> {
+      switch (labelBaseCurrency.getText()) {
+        case "USD" -> quoteCurrency = quoteCurrency(textFieldBaseCurrency.getText(), USD_PR_DKK);
+        case "DKK" -> quoteCurrency = quoteCurrency(textFieldBaseCurrency.getText(), DKK_PR_USD);
+      }
+      
+      textFieldQuoteCurrency.setText(String.format("%.2f", quoteCurrency));
+    });
+    
+    // action
+    buttonSwitch.addActionListener(e -> {
+      String tmpBaseCurrency = labelBaseCurrency.getText();
+      String tmpQuoteCurrency = labelQuoteCurrency.getText();
+      
+      switch (tmpBaseCurrency) {
+        case "DKK" -> labelConversionRate.setText(String.format("%.2f DKK pr. USD", USD_PR_DKK));
+        case "USD" -> labelConversionRate.setText(String.format("%.2f USD pr. DKK", DKK_PR_USD));
+      }
+      
+      labelBaseCurrency.setText(tmpQuoteCurrency);
+      labelQuoteCurrency.setText(tmpBaseCurrency);
+      
     });
     
     // frame
@@ -49,17 +76,17 @@ public class CurrencyConverter {
     frame.setVisible(true);
   }
   
-  private double usdPrDkk(String text) {
+  private double quoteCurrency(String text, double conversionRate) {
     NumberFormat format = NumberFormat.getInstance(Locale.getDefault()); // "," or "." as decimal separator
-    double USD = 0;
+    double quoteCurrencyAmount = 0;
     
     try {
-      USD = format.parse(text).doubleValue() * USD_PR_DKK;
+      quoteCurrencyAmount = format.parse(text).doubleValue() * conversionRate;
       
     } catch (Exception ignored) {
     }
     
-    return USD;
+    return quoteCurrencyAmount;
   }
   
   public static void main(String[] args) {
