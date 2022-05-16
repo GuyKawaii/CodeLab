@@ -3,13 +3,13 @@ package module_2;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-public class HelloWorldNotRefactored {
+public class HelloWorldNotRefactored_2_1 {
   // 1. Move JFrame and JLabel to attributes right under class declaration
   private JFrame frame;
   private JLabel label;
   private String[] labels;
   
-  public HelloWorldNotRefactored() {
+  public HelloWorldNotRefactored_2_1() {
     frame = new JFrame();
     label = new JLabel();
     
@@ -38,7 +38,7 @@ public class HelloWorldNotRefactored {
   
   public static void main(String[] args) {
     // 4. Finally, let main() method create an instance of class and call run() method
-    new HelloWorldNotRefactored().run();
+    new HelloWorldNotRefactored_2_1().run();
   }
   
 }

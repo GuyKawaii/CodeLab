@@ -1,18 +1,18 @@
-package module_2_exercise;
+package module_2;
 
 import javax.swing.*;
 import java.awt.*;
 import java.text.NumberFormat;
 import java.util.Locale;
 
-public class CurrencyConverter {
+public class CurrencyConverter_2_7 {
   private JFrame frame;
   private JPanel panel;
   private final double USD_PR_DKK;
   private final double DKK_PR_USD;
   private double quoteCurrency;
   
-  CurrencyConverter() {
+  CurrencyConverter_2_7() {
     // ### state
     USD_PR_DKK = 7.16;
     DKK_PR_USD = 1 / USD_PR_DKK;
@@ -90,6 +90,6 @@ public class CurrencyConverter {
   }
   
   public static void main(String[] args) {
-    new CurrencyConverter();
+    new CurrencyConverter_2_7();
   }
 }

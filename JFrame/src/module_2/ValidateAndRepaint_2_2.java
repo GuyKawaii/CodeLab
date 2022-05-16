@@ -4,11 +4,13 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
-public class ValidateAndRepaint {
+
+public class ValidateAndRepaint_2_2 {
   private JFrame frame;
   private JPanel panel;
   private JLabel label;
-  ValidateAndRepaint() {
+  
+  ValidateAndRepaint_2_2() {
     frame = new JFrame("ValidateAndRepaint");
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     frame.add(panel = new JPanel());
@@ -17,6 +19,7 @@ public class ValidateAndRepaint {
     frame.setLocationRelativeTo(null);
     frame.setVisible(true);
   }
+  
   void run() {
     JButton button = new JButton("Click me");
     panel.add(button);
@@ -24,7 +27,8 @@ public class ValidateAndRepaint {
     frame.validate();
     frame.repaint();
   }
+  
   public static void main(String[] args) {
-    new ValidateAndRepaint().run();
+    new ValidateAndRepaint_2_2().run();
   }
 }
